@@ -2,19 +2,27 @@ import reply from "../assets/icons/Reply.svg";
 import retweet from "../assets/icons/Retweet.svg";
 import react from "../assets/icons/React.svg";
 import share from "../assets/icons/Share.svg";
-import { Anchorme } from "react-anchorme";
+import Linkify from "react-linkify";
 import { formatDate } from "../utils/format";
 
-const CustomLink = (props) => {
-  return <a className="text-blue-400" {...props} />;
-};
-
 export default function Tweet({ tweet }) {
+  const componentDecorator = (href, text, key) => (
+    <a
+      className="text-blue-600"
+      href={href}
+      key={key}
+      target="_blank"
+      rel="noreferrer"
+    >
+      {text}
+    </a>
+  );
+
   return (
     <div className="flex p-3 border-b border-slate-800">
       <img
         src={tweet.author_avatar}
-        alt={"alt"}
+        alt="author avatar"
         className="h-16 rounded-full"
       />
       <div className="ms-5 w-full items-center">
@@ -40,11 +48,11 @@ export default function Tweet({ tweet }) {
           )}`}</span>
         </div>
         <div>
-          <p className="text-white mt-2 mb-5">
-            <Anchorme linkComponent={CustomLink} target="_blank">
+          <div className="text-white mt-2 mb-5">
+            <Linkify componentDecorator={componentDecorator}>
               {tweet.text}
-            </Anchorme>
-          </p>
+            </Linkify>
+          </div>
           <div className="w-full h-1/3 mb-5">
             {tweet.image && (
               <img

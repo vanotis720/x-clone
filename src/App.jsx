@@ -8,7 +8,6 @@ import TweetInput from "./components/TweetInput";
 import Button from "./components/Button";
 import Tweet from "./components/Tweet";
 import tweets from "./assets/tweets-x.json";
-const limitedTweets = tweets.slice(0, 10);
 
 function App() {
   return (
@@ -26,7 +25,7 @@ function App() {
           <img src={moreTweets} alt="more tweets icon" className="size-8" />
         </div>
         <TweetInput />
-        {limitedTweets.map((item) => (
+        {tweets.map((item) => (
           <Tweet key={item.id} tweet={item} />
         ))}
       </div>
