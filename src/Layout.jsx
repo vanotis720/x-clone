@@ -1,4 +1,3 @@
-import logoX from "./assets/x-white.svg";
 import settingsIcon from "./assets/icons/Settings.svg";
 import moreTweets from "./assets/icons/Top-Tweets.svg";
 import MenuItem from "./components/MenuItem";
@@ -9,9 +8,9 @@ import Button from "./components/Button";
 import Tweet from "./components/Tweet";
 import tweets from "./assets/tweets-x.json";
 
-function App() {
+export default function Layout(props) {
   return (
-    <div className="grid grid-cols-12 gap-4 mx-52 mt-1 h-full relative">
+    <div className="grid grid-cols-12 gap-4 mx-52 mt-1 h-full">
       <div className="col-span-2 h-screen">
         {MENU.map((item, index) => (
           <MenuItem key={index} img={item.img} name={item.name} />
@@ -28,7 +27,7 @@ function App() {
           <Tweet key={item.id} tweet={item} />
         ))}
       </div>
-      <div className="fixed col-span-3 mt-2">
+      <div className="col-span-3 mt-2">
         <input
           type="search"
           placeholder="Search twitter"
@@ -65,5 +64,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

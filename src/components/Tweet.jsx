@@ -26,11 +26,11 @@ export default function Tweet({ tweet }) {
         className="h-16 rounded-full"
       />
       <div className="ms-5 w-full items-center">
-        <div className="flex">
+        <div className="flex items-center">
           <h3 className="text-white font-extrabold text-lg">{tweet.source}</h3>
-          <span className="text-slate-600 mx-1">@{tweet.source}</span>
           {tweet.isVerified && (
             <svg
+              className="mx-1"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -43,6 +43,7 @@ export default function Tweet({ tweet }) {
               />
             </svg>
           )}
+          <span className="text-slate-600 mx-1">@{tweet.source}</span>
           <span className="text-slate-600">{` . ${formatDate(
             tweet.date
           )}`}</span>

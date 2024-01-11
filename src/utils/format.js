@@ -3,7 +3,10 @@ export const formatDate = (date) => {
     const currentDate = new Date();
     const dateDiff = (currentDate - date) / (1000 * 60 * 60); // Difference in hours
 
-    if (dateDiff < 24) {
+    if (dateDiff < 3) {
+        return `${date.getMinutes()} min`;
+    }
+    else if (dateDiff < 24) {
         return `${Math.floor(dateDiff)} hours ago`;
     } else if (dateDiff < 24 * 7) {
         return `${Math.floor(dateDiff / 24)} days ago`;
