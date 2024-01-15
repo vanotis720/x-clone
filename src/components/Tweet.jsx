@@ -6,7 +6,7 @@ import Linkify from "react-linkify";
 import { formatDate } from "../utils/format";
 import TweetButton from "./TweetButton";
 
-export default function Tweet({ tweet }) {
+export default function Tweet({ tweet, handleClick }) {
   const componentDecorator = (href, text, key) => (
     <a
       className="text-blue-600"
@@ -18,6 +18,10 @@ export default function Tweet({ tweet }) {
       {text}
     </a>
   );
+
+  console.log("==================== lol ================");
+  console.log(handleClick);
+  console.log("====================================");
 
   return (
     <div className="flex p-3 border-b border-slate-800">
@@ -72,7 +76,8 @@ export default function Tweet({ tweet }) {
             icon={react}
             counter={tweet.favorites}
             hoverColor="group-hover:text-orange-500"
-            handleClick={() => alert("clicked")}
+            handleClick={handleClick}
+            id={tweet.id}
           />
           <TweetButton icon={share} />
         </div>

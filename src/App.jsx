@@ -8,8 +8,28 @@ import TweetInput from "./components/TweetInput";
 import Button from "./components/Button";
 import Tweet from "./components/Tweet";
 import tweets from "./assets/tweets-x.json";
+import { useState } from "react";
 
 function App() {
+  const [posts, setPosts] = useState(tweets);
+
+  const handleClick = (id) => {
+    const updatedPosts = posts.map((post) => {
+      if (post.id === id) {
+        return {
+          ...post,
+          favorites: parseFloat(post["favorites"]) + 1,
+        };
+      }
+      return post;
+    });
+
+    setPosts(updatedPosts);
+
+    console.log("====================================");
+    console.log("updated");
+    console.log("====================================");
+  };
   return (
     <div className="grid grid-cols-12 gap-4 mx-52 mt-1 h-full relative">
       <div className="col-span-2 h-screen sticky top-1">
@@ -24,8 +44,8 @@ function App() {
           <img src={moreTweets} alt="more tweets icon" className="size-8" />
         </div>
         <TweetInput />
-        {tweets.map((item) => (
-          <Tweet key={item.id} tweet={item} />
+        {posts.map((item) => (
+          <Tweet key={item.id} tweet={item} handleClick={handleClick} />
         ))}
       </div>
       <div className="col-span-3 h-screen mt-2 sticky top-1">

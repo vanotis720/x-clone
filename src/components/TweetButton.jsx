@@ -4,10 +4,14 @@ export default function TweetButton({
   icon,
   counter,
   handleClick,
+  id,
   hoverColor = "group-hover:text-blue-500",
 }) {
+  console.log("====================================");
+  console.log(id);
+  console.log("====================================");
   return (
-    <button onClick={handleClick} className="flex w-1/4 group">
+    <button onClick={() => handleClick(id)} className="flex w-1/4 group">
       <img
         src={icon}
         alt="media"
