@@ -84,17 +84,17 @@ function App() {
         </div>
       </div>
       <div className="sm:hidden bg-slate-950 w-full flex justify-between border-t border-slate-800 fixed bottom-0 left-10 right-10">
-        <button className="">
-          <img src={home} alt="media" className={`w-full h-10`} />
+        <button className="w-1/4 h-8">
+          <img src={home} alt="media" className={''} />
         </button>
-        <button className="">
-          <img src={home} alt="media" className={`w-full  h-10`} />
+        <button className="w-1/4">
+          <img src={home} alt="media" className={''} />
         </button>
-        <button className="">
-          <img src={moreTweets} alt="media" className={`w-full  h-10`} />
+        <button className="w-1/4">
+          <img src={moreTweets} alt="media" className={''} />
         </button>
-        <button className="">
-          <img src={settingsIcon} alt="media" className={`w-full  h-10`} />
+        <button className="w-1/4">
+          <img src={settingsIcon} alt="media" className={''} />
         </button>
       </div>
     </div>
