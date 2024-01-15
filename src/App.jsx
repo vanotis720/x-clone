@@ -31,8 +31,8 @@ function App() {
     console.log("====================================");
   };
   return (
-    <div className="grid grid-cols-12 gap-4 mx-52 mt-1 h-full relative">
-      <div className="col-span-2 h-screen sticky top-1">
+    <div className="md:grid md:grid-cols-12 md:gap-4 mx-4 md:mx-52 mt-1 h-full relative">
+      <div className="col-span-2 h-screen sticky top-1 hidden sm:block">
         {MENU.map((item, index) => (
           <MenuItem key={index} img={item.img} name={item.name} />
         ))}
@@ -48,7 +48,7 @@ function App() {
           <Tweet key={item.id} tweet={item} handleClick={handleClick} />
         ))}
       </div>
-      <div className="col-span-3 h-screen mt-2 sticky top-1">
+      <div className="col-span-3 h-screen mt-2 sticky top-1 hidden sm:block">
         <input
           type="search"
           placeholder="Search twitter"
