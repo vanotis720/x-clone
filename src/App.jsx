@@ -12,7 +12,7 @@ import tweets from "./assets/tweets-x.json";
 function App() {
   return (
     <div className="grid grid-cols-12 gap-4 mx-52 mt-1 h-full relative">
-      <div className="col-span-2 h-screen">
+      <div className="col-span-2 h-screen sticky top-1">
         {MENU.map((item, index) => (
           <MenuItem key={index} img={item.img} name={item.name} />
         ))}
@@ -28,7 +28,7 @@ function App() {
           <Tweet key={item.id} tweet={item} />
         ))}
       </div>
-      <div className="fixed col-span-3 mt-2">
+      <div className="col-span-3 h-screen mt-2 sticky top-1">
         <input
           type="search"
           placeholder="Search twitter"

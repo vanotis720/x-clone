@@ -17,3 +17,10 @@ export const formatDate = (date) => {
         return date.toLocaleDateString(undefined, options);
     }
 }
+
+export const formatCount = (counter) => {
+    if (counter / 1000 > 1) {
+        return (counter / 1000).toFixed(1) + 'k';
+    }
+    return counter;
+}

@@ -4,6 +4,7 @@ import react from "../assets/icons/React.svg";
 import share from "../assets/icons/Share.svg";
 import Linkify from "react-linkify";
 import { formatDate } from "../utils/format";
+import TweetButton from "./TweetButton";
 
 export default function Tweet({ tweet }) {
   const componentDecorator = (href, text, key) => (
@@ -65,21 +66,15 @@ export default function Tweet({ tweet }) {
           </div>
         </div>
         <div className="grid grid-cols-4 justify-items-start">
-          <div className="flex w-1/4">
-            <img src={reply} alt="media" className="justify-start mr-5" />
-            <span className="text-slate-600">{tweet.replies}</span>
-          </div>
-          <div className="flex w-1/4">
-            <img src={retweet} alt="media" className="justify-start mr-5" />
-            <span className="text-slate-600">{tweet.retweets}</span>
-          </div>
-          <div className="flex w-1/4">
-            <img src={react} alt="media" className="justify-start mr-5" />
-            <span className="text-slate-600">{tweet.favorites}</span>
-          </div>
-          <div className="flex w-1/4">
-            <img src={share} alt="media" className="justify-start" />
-          </div>
+          <TweetButton icon={reply} counter={tweet.replies} />
+          <TweetButton icon={retweet} counter={tweet.retweets} />
+          <TweetButton
+            icon={react}
+            counter={tweet.favorites}
+            hoverColor="group-hover:text-orange-500"
+            handleClick={() => alert("clicked")}
+          />
+          <TweetButton icon={share} />
         </div>
       </div>
     </div>
