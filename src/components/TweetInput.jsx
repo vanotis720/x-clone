@@ -7,15 +7,15 @@ import media from "../assets/icons/Poll.svg";
 
 export default function TweetInput() {
   return (
-    <div className="flex p-3 h-auto border border-slate-800">
+    <div className="md:flex p-3 h-auto border border-slate-800">
       <img
         src="https://picsum.photos/200"
         alt={"alt"}
-        className="h-16 rounded-full"
+        className="md:h-16 hidden rounded-full"
       />
       <div className="ms-5 mb-5 w-full items-center">
         <textarea
-          className="bg-slate-950 w-full h-3/4 text-white resize-y overflow-hidden focus:border-0 mb-2"
+          className="bg-slate-950 w-full h-3/4 text-white resize-y overflow-hidden focus:outline-none mb-2"
           name="tweet"
           placeholder="What's happening?"
         ></textarea>

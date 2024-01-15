@@ -9,6 +9,7 @@ import Button from "./components/Button";
 import Tweet from "./components/Tweet";
 import tweets from "./assets/tweets-x.json";
 import { useState } from "react";
+import home from "./assets/icons/Home-Fill.svg";
 
 function App() {
   const [posts, setPosts] = useState(tweets);
@@ -81,6 +82,20 @@ function App() {
             <TrendItem />
           </div>
         </div>
+      </div>
+      <div className="sm:hidden bg-slate-950 w-full flex justify-between border-t border-slate-800 fixed bottom-0 left-10 right-10">
+        <button className="">
+          <img src={home} alt="media" className={`w-full h-10`} />
+        </button>
+        <button className="">
+          <img src={home} alt="media" className={`w-full  h-10`} />
+        </button>
+        <button className="">
+          <img src={moreTweets} alt="media" className={`w-full  h-10`} />
+        </button>
+        <button className="">
+          <img src={settingsIcon} alt="media" className={`w-full  h-10`} />
+        </button>
       </div>
     </div>
   );
