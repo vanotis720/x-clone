@@ -32,14 +32,14 @@ function App() {
     console.log("====================================");
   };
   return (
-    <div className="md:grid md:grid-cols-12 md:gap-4 mx-4 md:mx-52 mt-1 h-full relative">
+    <div className="sm:grid sm:grid-cols-12 sm:gap-4 mx-4 sm:mx-52 mt-1 h-full relative">
       <div className="col-span-2 h-screen sticky top-1 hidden sm:block">
         {MENU.map((item, index) => (
           <MenuItem key={index} img={item.img} name={item.name} />
         ))}
         <Button style="bg-blue-700 text-white w-full py-5" />
       </div>
-      <div className="grid grid-cols-subgrid gap-4 col-span-7 border-x border-slate-800 overflow-y-auto">
+      <div className="sm:grid sm:grid-cols-subgrid sm:gap-4 sm:col-span-7 border-x border-slate-800 overflow-y-auto">
         <div className="flex justify-between items-center border-t border-slate-800 px-3">
           <h1 className="text-white font-bold">Home</h1>
           <img src={moreTweets} alt="more tweets icon" className="size-8" />
@@ -85,16 +85,16 @@ function App() {
       </div>
       <div className="sm:hidden bg-slate-950 w-full flex justify-between border-t border-slate-800 fixed bottom-0 left-10 right-10">
         <button className="w-1/4 h-8">
-          <img src={home} alt="media" className={''} />
+          <img src={home} alt="media" className={""} />
         </button>
         <button className="w-1/4">
-          <img src={home} alt="media" className={''} />
+          <img src={home} alt="media" className={""} />
         </button>
         <button className="w-1/4">
-          <img src={moreTweets} alt="media" className={''} />
+          <img src={moreTweets} alt="media" className={""} />
         </button>
         <button className="w-1/4">
-          <img src={settingsIcon} alt="media" className={''} />
+          <img src={settingsIcon} alt="media" className={""} />
         </button>
       </div>
     </div>
