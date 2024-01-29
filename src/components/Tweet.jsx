@@ -19,10 +19,6 @@ export default function Tweet({ tweet, handleClick }) {
     </a>
   );
 
-  console.log("==================== lol ================");
-  console.log(handleClick);
-  console.log("====================================");
-
   return (
     <div className="flex p-3 border-b border-slate-800">
       <img
