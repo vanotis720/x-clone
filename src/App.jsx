@@ -1,4 +1,3 @@
-import logoX from "./assets/x-white.svg";
 import settingsIcon from "./assets/icons/Settings.svg";
 import moreTweets from "./assets/icons/Top-Tweets.svg";
 import MenuItem from "./components/MenuItem";
@@ -7,12 +6,15 @@ import TrendItem from "./components/TrendItem";
 import TweetInput from "./components/TweetInput";
 import Button from "./components/Button";
 import Tweet from "./components/Tweet";
-import tweets from "./assets/tweets-x.json";
 import { useState } from "react";
 import home from "./assets/icons/Home-Fill.svg";
+import { useEffect } from "react";
+import { getTweetsWithUsers } from "./utils/service";
+import Loader from "./components/Loader";
 
 function App() {
-  const [posts, setPosts] = useState(tweets);
+  const [isLoading, setIsLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
 
   const handleClick = (id) => {
     const updatedPosts = posts.map((post) => {
@@ -31,6 +33,26 @@ function App() {
     console.log("updated");
     console.log("====================================");
   };
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setIsLoading(true);
+      const posts = await getTweetsWithUsers();
+      console.log(posts);
+      setPosts(posts);
+      setIsLoading(false);
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="h-screen">
+        <Loader />
+      </div>
+    );
+  }
   return (
     <div className="sm:grid sm:grid-cols-12 sm:gap-4 mx-4 sm:mx-52 mt-1 h-full relative">
       <div className="col-span-2 h-screen sticky top-1 hidden sm:block">
@@ -39,8 +61,8 @@ function App() {
         ))}
         <Button style="bg-blue-700 text-white w-full py-5" />
       </div>
-      <div className="sm:grid sm:grid-cols-subgrid sm:gap-4 sm:col-span-7 border-x border-slate-800 overflow-y-auto">
-        <div className="flex justify-between items-center border-t border-slate-800 px-3">
+      <div className="sm:grid-cols-subgrid sm:gap-4 sm:col-span-7 border-x border-slate-800 overflow-y-auto">
+        <div className="flex justify-between items-center border-t border-slate-800 px-3 h-fit">
           <h1 className="text-white font-bold">Home</h1>
           <img src={moreTweets} alt="more tweets icon" className="size-8" />
         </div>

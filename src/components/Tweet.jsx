@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import reply from "../assets/icons/Reply.svg";
 import retweet from "../assets/icons/Retweet.svg";
 import react from "../assets/icons/React.svg";
@@ -5,6 +6,7 @@ import share from "../assets/icons/Share.svg";
 import Linkify from "react-linkify";
 import { formatDate } from "../utils/format";
 import TweetButton from "./TweetButton";
+import { randomDate } from "../utils/helpers";
 
 export default function Tweet({ tweet, handleClick }) {
   const componentDecorator = (href, text, key) => (
@@ -20,15 +22,17 @@ export default function Tweet({ tweet, handleClick }) {
   );
 
   return (
-    <div className="flex p-3 border-b border-slate-800">
+    <div className="flex p-3 border-b border-slate-800 h-fit">
       <img
-        src={tweet.author_avatar}
+        src={tweet.user.thumbnailProfil}
         alt="author avatar"
         className="h-16 rounded-full"
       />
       <div className="ms-5 w-full items-center">
         <div className="flex items-center">
-          <h3 className="text-white font-extrabold text-lg">{tweet.source}</h3>
+          <h3 className="text-white font-extrabold text-lg">
+            {tweet.user.name}
+          </h3>
           {tweet.isVerified && (
             <svg
               className="mx-1"
@@ -44,21 +48,23 @@ export default function Tweet({ tweet, handleClick }) {
               />
             </svg>
           )}
-          <span className="text-slate-600 mx-1">@{tweet.source}</span>
-          <span className="text-slate-600">{` . ${formatDate(
-            tweet.date
-          )}`}</span>
+          <span className="text-slate-600 mx-1">@{tweet.user.username}</span>
+          <span className="text-slate-600">
+            {` . ${formatDate(
+              tweet.date ?? randomDate(new Date("2022-01-01"), new Date())
+            )}`}
+          </span>
         </div>
         <div>
           <div className="text-white mt-2 mb-5">
             <Linkify componentDecorator={componentDecorator}>
-              {tweet.text}
+              {tweet.body}
             </Linkify>
           </div>
           <div className="w-full h-1/3 mb-5">
-            {tweet.image && (
+            {tweet.url && (
               <img
-                src={tweet.image}
+                src={tweet.url}
                 alt="alt"
                 className="rounded-3xl max-h-80 min-w-64"
               />
@@ -66,11 +72,11 @@ export default function Tweet({ tweet, handleClick }) {
           </div>
         </div>
         <div className="grid grid-cols-4 justify-items-start">
-          <TweetButton icon={reply} counter={tweet.replies} />
-          <TweetButton icon={retweet} counter={tweet.retweets} />
+          <TweetButton icon={reply} counter={0} />
+          <TweetButton icon={retweet} counter={tweet.repost} />
           <TweetButton
             icon={react}
-            counter={tweet.favorites}
+            counter={tweet.like}
             hoverColor="group-hover:text-orange-500"
             handleClick={handleClick}
             id={tweet.id}

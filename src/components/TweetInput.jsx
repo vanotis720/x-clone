@@ -7,11 +7,11 @@ import media from "../assets/icons/Poll.svg";
 
 export default function TweetInput() {
   return (
-    <div className="md:flex p-3 h-auto border border-slate-800">
+    <div className="md:flex p-3 h-fit border-y border-slate-800">
       <img
         src="https://picsum.photos/200"
         alt={"alt"}
-        className="md:h-16 hidden rounded-full"
+        className="sm:h-16 rounded-full"
       />
       <div className="ms-5 mb-5 w-full items-center">
         <textarea
