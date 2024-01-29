@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { formatCount } from "../utils/format";
 
 export default function TweetButton({
@@ -7,9 +8,19 @@ export default function TweetButton({
   handleClick,
   id,
   hoverColor = "group-hover:text-blue-500",
+  type,
 }) {
+  const [liked, setLiked] = useState(false);
+
+  const handleLikeClick = () => {
+    if (type == "like") {
+      handleClick(id, liked ? "unlike" : "like");
+      setLiked(!liked);
+    }
+  };
+
   return (
-    <button onClick={() => handleClick(id)} className="flex w-1/4 group">
+    <button onClick={handleLikeClick} className="flex w-1/4 group">
       <img
         src={icon}
         alt="media"

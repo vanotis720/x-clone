@@ -16,12 +16,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
 
-  const handleClick = (id) => {
+  const handleClick = (id, type) => {
     const updatedPosts = posts.map((post) => {
       if (post.id === id) {
         return {
           ...post,
-          like: parseFloat(post.like) + 1,
+          like:
+            type == "like"
+              ? parseFloat(post.like) + 1
+              : parseFloat(post.like) - 1,
         };
       }
       return post;

@@ -72,16 +72,17 @@ export default function Tweet({ tweet, handleClick }) {
           </div>
         </div>
         <div className="grid grid-cols-4 justify-items-start">
-          <TweetButton icon={reply} counter={0} />
-          <TweetButton icon={retweet} counter={tweet.repost} />
+          <TweetButton icon={reply} counter={0} type="reply" />
+          <TweetButton icon={retweet} counter={tweet.repost} type="retweet" />
           <TweetButton
             icon={react}
             counter={tweet.like}
             hoverColor="group-hover:text-orange-500"
             handleClick={handleClick}
             id={tweet.id}
+            type="like"
           />
-          <TweetButton icon={share} />
+          <TweetButton icon={share} type="share" />
         </div>
       </div>
     </div>
