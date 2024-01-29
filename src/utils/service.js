@@ -1,4 +1,5 @@
 import axios from "axios";
+import { randomDate } from "./helpers";
 
 const base_url = `https://my-json-server.typicode.com/amare53/twiterdb`;
 
@@ -29,7 +30,7 @@ export async function getTweetsWithUsers() {
             postsData.map(async (post) => {
                 const userResponse = await axios.get(`${base_url}/users/${post.userId}`);
                 const userData = userResponse.data;
-                return { ...post, user: userData };
+                return { ...post, date: randomDate(new Date("2022-01-01"), new Date()), user: userData };
             })
         );
         return postsWithUsers;

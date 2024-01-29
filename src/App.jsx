@@ -21,24 +21,18 @@ function App() {
       if (post.id === id) {
         return {
           ...post,
-          favorites: parseFloat(post["favorites"]) + 1,
+          like: parseFloat(post.like) + 1,
         };
       }
       return post;
     });
-
     setPosts(updatedPosts);
-
-    console.log("====================================");
-    console.log("updated");
-    console.log("====================================");
   };
 
   useEffect(() => {
     const fetchPosts = async () => {
       setIsLoading(true);
       const posts = await getTweetsWithUsers();
-      console.log(posts);
       setPosts(posts);
       setIsLoading(false);
     };

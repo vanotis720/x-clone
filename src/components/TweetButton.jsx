@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { formatCount } from "../utils/format";
 
 export default function TweetButton({
@@ -7,9 +8,6 @@ export default function TweetButton({
   id,
   hoverColor = "group-hover:text-blue-500",
 }) {
-  console.log("====================================");
-  console.log(id);
-  console.log("====================================");
   return (
     <button onClick={() => handleClick(id)} className="flex w-1/4 group">
       <img
